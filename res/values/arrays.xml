@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string-array name="exitSettings">
+        <item name="exitToDesktop">Stäng till skrivbordet</item>
+        <item name="exitToInbox">Stäng till inkorgen</item>
+    </string-array>
+    
+    <string-array name="exitValues">
+        <item name="exitToDesktop">exitToDesktop</item>
+        <item name="exitToInbox">exitToInbox</item>
+    </string-array>
+
+</resources>

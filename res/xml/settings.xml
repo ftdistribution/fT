@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="PreferenceCategory" >
+        <ListPreference 
+            android:key="exitsetting"
+            android:title="När biljett trollas gå till..."
+            android:summary="Bestämmer om du vill gå till skrivbordet eller sms inkorgen när programmet slutar."
+            android:defaultValue="exitToDesktop" 
+            android:entries="@array/exitSettings"
+            android:entryValues="@array/exitValues"
+        />
+    </PreferenceCategory>
+    
+    <CheckBoxPreference
+	            android:key="smsout"
+	            android:summary="Sparar SMS i utkorgen."
+	            android:title="Spara UT SMS."
+	            android:defaultValue="false"
+	        />
+    
+    <CheckBoxPreference
+	            android:key="stealthmode"
+	            android:summary="Trollar biljetter baserad på senaste trollandet utan att visa något gränsnitt.\nInstallera om eller ta bort appens inställningar för att ångra."
+	            android:title="Stealth mode"
+	            android:defaultValue="false"
+	        />
+    
+</PreferenceScreen>
