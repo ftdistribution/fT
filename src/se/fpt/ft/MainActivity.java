@@ -128,11 +128,14 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 			e.printStackTrace();
 		}
 		
-		if(Ticket.getError() != null) {
+		String errorMessage = Ticket.getError();
+		if(errorMessage != null) {
 			Toast.makeText(
 					this,
-					Ticket.getError(), Toast.LENGTH_LONG)
+					errorMessage,
+					Toast.LENGTH_LONG)
 					.show();
+			return;
 		}
 
 		final SharedPreferences sharedPrefs = PreferenceManager
@@ -167,22 +170,27 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 		    	cursor = getContentResolver().query(fakedSMS, null, null, null, null);
 		    	cursor.moveToNext();
 		    	fakedDate = cursor.getLong(4);
-		    	
-		    	if(sharedPrefs.getString("smsRemoveTime", "0") != "0" ) {
+
+		    	if(!sharedPrefs.getString("smsRemoveTime", "0").equals("0") ) {
 		    		try{ Thread.sleep(Long.valueOf(sharedPrefs.getString("smsRemoveTime", "0"))); }
 		    		catch(InterruptedException e){ }
 			    	if(sentSMS != null) {
 			    		cursor = getContentResolver().query(sentSMS, null, null, null, null);
+			    		cursor.moveToNext();
+			    		if(cursor.getCount() != 0) {
+			    			if(sentDate == cursor.getLong(4)) {
+					    		getContentResolver().delete(sentSMS, null, null);
+					    	}
+			    		}
 				    	cursor.moveToNext();
-				    	if(sentDate == cursor.getLong(4)) {
-				    		getContentResolver().delete(sentSMS, null, null);
-				    	}
 			    	}
 			    	cursor = getContentResolver().query(fakedSMS, null, null, null, null);
 			    	cursor.moveToNext();
-			    	if(fakedDate == cursor.getLong(4)) {
-			    		getContentResolver().delete(fakedSMS, null, null);
-			    	}
+			    	if(cursor.getCount() != 0) {
+			    		if(fakedDate == cursor.getLong(4)) {
+				    		getContentResolver().delete(fakedSMS, null, null);
+				    	}
+		    		}
 		    	}
 		    }
 		  }).start();
