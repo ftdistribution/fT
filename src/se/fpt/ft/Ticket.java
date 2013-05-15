@@ -45,7 +45,9 @@ public class Ticket {
 	}
 
 	public static String getError() {
-		return errorMessages;
+		String mErrorMessages = errorMessages;
+		errorMessages = null;
+		return mErrorMessages;
 	}
 
 	
