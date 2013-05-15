@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="PreferenceCategory" >
+    <PreferenceCategory android:title="Inställningar" >
         <ListPreference 
             android:key="exitsetting"
             android:title="När biljett trollas gå till..."
@@ -25,5 +25,13 @@
 	            android:title="Stealth mode"
 	            android:defaultValue="false"
 	        />
+    
+    <ListPreference
+            android:key="smsRemoveTime"
+            android:defaultValue="0"
+            android:entries="@array/smsRemoveTime"
+            android:entryValues="@array/smsRemoveTimeValues"
+            android:summary="Tar bort SMS efter givet tidsintervall."
+            android:title="Ta bort gammla SMS." />
     
 </PreferenceScreen>

@@ -8,15 +8,7 @@
 	<string name="orebro">Örebro</string>
 	<string name="vasteras">Västerås</string>
 	<string name="uppsala">Uppsala</string>
-	
-    <string-array name="cities">
-        <item name="0">@string/stockholm</item>
-		<item name="1">@string/orebro</item>
-		<item name="2">@string/vasteras</item>
-		<item name="3">@string/uppsala</item>
-    </string-array>
-    
-    <string name="vuxen">Vuxen</string>
+	<string name="vuxen">Vuxen</string>
     <string name="adult">Vuxen</string>
     <string name="youngstudent">Skolungdom</string>
     <string name="buttontext">Trolla biljett!</string>

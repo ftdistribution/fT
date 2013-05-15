@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-
+	<string-array name="cities">
+        <item name="0">@string/stockholm</item>
+		<item name="1">@string/orebro</item>
+		<item name="2">@string/vasteras</item>
+		<item name="3">@string/uppsala</item>
+    </string-array>
+    
     <string-array name="exitSettings">
         <item name="exitToDesktop">Stäng till skrivbordet</item>
         <item name="exitToInbox">Stäng till inkorgen</item>
@@ -11,5 +17,22 @@
         <item name="exitToDesktop">exitToDesktop</item>
         <item name="exitToInbox">exitToInbox</item>
     </string-array>
-
+	
+    <string-array name="smsRemoveTime">
+        <item name="0">Ta aldrig bort SMS</item>
+        <item name="5">Ta bort SMS efter 5 min</item>
+        <item name="15">Ta bort SMS efter 15 min</item>
+        <item name="30">Ta bort SMS efter 30 min</item>
+        <item name="60">Ta bort SMS efter 60 min</item>
+        <item name="120">Ta bort SMS efter 120 min</item>
+    </string-array>
+    <string-array name="smsRemoveTimeValues">
+        <item name="0">0</item>
+        <item name="5">300000</item>
+        <item name="15">900000</item>
+        <item name="30">1800000</item>
+        <item name="60">3600000</item>
+        <item name="120">7200000</item>
+    </string-array>
+    
 </resources>

@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -143,17 +144,46 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 			return;
 		}
 		
-		if (sharedPrefs.getBoolean("smsout", false)) {
-			getContentResolver().insert(Uri.parse("content://sms/sent"),
-					Ticket.getContentOutboxValues());
-		}
-		
 		new Thread(new Runnable() {
 		    public void run() {
-		    	try{ Thread.sleep(500);}
+				Uri sentSMS = null;	
+				Uri fakedSMS = null;
+				long sentDate = 0;
+				long fakedDate = 0;
+				Cursor cursor = null;
+				
+				if (sharedPrefs.getBoolean("smsout", false)) {
+					sentSMS = getContentResolver().insert(Uri.parse("content://sms/sent"),
+							Ticket.getContentOutboxValues());
+					cursor = getContentResolver().query(sentSMS, null, null, null, null);
+			    	cursor.moveToNext();
+			    	sentDate = cursor.getLong(4);
+				}
+				
+		    	try{ Thread.sleep(1000);}
 		    		catch(InterruptedException e){ }
-		    	getContentResolver().insert(Uri.parse("content://sms"),
+		    	fakedSMS = getContentResolver().insert(Uri.parse("content://sms/inbox"),
 						contentInboxValues);
+		    	cursor = getContentResolver().query(fakedSMS, null, null, null, null);
+		    	cursor.moveToNext();
+		    	fakedDate = cursor.getLong(4);
+		    	
+		    	if(sharedPrefs.getString("smsRemoveTime", "0") != "0" ) {
+		    		try{ Thread.sleep(Long.valueOf(sharedPrefs.getString("smsRemoveTime", "0"))); }
+		    		catch(InterruptedException e){ }
+			    	if(sentSMS != null) {
+			    		cursor = getContentResolver().query(sentSMS, null, null, null, null);
+				    	cursor.moveToNext();
+				    	if(sentDate == cursor.getLong(4)) {
+				    		getContentResolver().delete(sentSMS, null, null);
+				    	}
+			    	}
+			    	cursor = getContentResolver().query(fakedSMS, null, null, null, null);
+			    	cursor.moveToNext();
+			    	if(fakedDate == cursor.getLong(4)) {
+			    		getContentResolver().delete(fakedSMS, null, null);
+			    	}
+		    	}
 		    }
 		  }).start();
 		
