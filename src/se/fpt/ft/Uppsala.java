@@ -122,7 +122,7 @@ public class Uppsala extends Ticket {
 		contentInboxValues.put("body", "UV " + creature + " Giltig till "
 				+ DateFormat.format("kk:mm yyyy-MM-dd", timePiece) + "\n"
 				+ zone + "\n\n" + String.valueOf(price) + " SEK (6% MOMS)\n"
-				+ seed + "\n\n" + generateRandomAEOXStringBlock());
+				+ seed + "\n\n" + generateRandomAEOXStringBlock(seed));
 
 		contentOutboxValues.put("address", String.valueOf("0704202222"));
 		contentOutboxValues.put("body", code);

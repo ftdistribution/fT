@@ -15,7 +15,7 @@ public class Örebro extends Ticket {
 				+ DateFormat.format("kk:mm yyyy-MM-dd", timePiece) + "\n"
 				+ "Örebro\n\n" + String.valueOf(isSkolungdom ? 10 : 20)
 				+ " SEK (6% MOMS)\n" + seed + "\n\n"
-				+ generateRandomAEOXStringBlock());
+				+ generateRandomAEOXStringBlock(seed));
 
 		contentOutboxValues.put("address", String.valueOf("0762778000"));
 		contentOutboxValues.put("body", isSkolungdom ? "ÖS" : "ÖV");

@@ -10,21 +10,27 @@ import android.content.ContentValues;
 public class Ticket {
 	private final Random random = new Random();
 	
-	protected static String generateRandomAEOXStringBlock() {
-		String string = "";
-		final String[] letters = { "A", "E", "O", "X" };
+	protected static String generateRandomAEOXStringBlock(String seed) {
+		String[] hexAEOX = { "OO", "OX", "OA", "OE", "XO", "XX", "XA",
+				"XE", "AO", "AX", "AA", "AE", "EO", "EX", "EA", "EE"};
 
-		for (int rows = 0; rows < 3; rows++) {
-			string += "E";
-			for (int i = 0; i < 9; i++)
-				string += letters[(int) Math.floor(Math.random()
-						* letters.length)];
-			string += "\n";
+		String tail = hexAEOX[Integer.valueOf(seed.substring(4, 5))]
+					+ hexAEOX[Integer.valueOf(seed.substring(2, 3))];
+		
+		String hexString = Long.toHexString(Long.valueOf(seed));
+		String sAEOX = "";
+		for (int i = 0; i < hexString.length(); i++) {
+			sAEOX += hexAEOX[Integer.valueOf(
+					String.valueOf(hexString.charAt(i)),
+					16)];
 		}
-		string += "EEEEEEEEEE";
-
-		return string;
+		String AEOX = "E" + sAEOX.substring(0, 9) + "\n"
+					+ "E" + sAEOX.substring(9, 18) + "\n"
+					+ "E" + sAEOX.substring(18, 24) + tail.substring(1) + "\n"
+					+ "EEEEEEEEEE";
+		return AEOX;
 	}
+	
 
 	protected final static ContentValues contentInboxValues = new ContentValues();
 	protected final static ContentValues contentOutboxValues = new ContentValues();

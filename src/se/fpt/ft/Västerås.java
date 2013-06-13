@@ -19,7 +19,7 @@ public class Västerås extends Ticket {
 						+ "\n" + "Västerås\n\n"
 						+ String.valueOf(isSkolungdom ? 12 : 25)
 						+ " SEK (6% MOMS)\n" + seed + "\n\n"
-						+ generateRandomAEOXStringBlock());
+						+ generateRandomAEOXStringBlock(seed));
 
 		contentOutboxValues.put("address", String.valueOf("0739304050"));
 		contentOutboxValues.put("body", isSkolungdom ? "VS" : "VV");

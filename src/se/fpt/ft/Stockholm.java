@@ -45,7 +45,7 @@ public class Stockholm extends Ticket {
 						+ String.valueOf(numberTail)
 						+ "\n"
 						+ "\n"
-						+ generateRandomAEOXStringBlock()
+						+ generateRandomAEOXStringBlock(seed)
 						+ "\n\n"
 						+ "SL biljett giltig till "
 						+ DateFormat.format("kk:mm yyyy-MM-dd", timePiece)
