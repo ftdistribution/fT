@@ -31,7 +31,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 	Set<String> currentSettings = new HashSet<String>();
 	SharedPreferences sharedPreferences = null;
 	SharedPreferences.Editor sharedPreferencesEditor = null;
-	boolean backFromInbox = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +53,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if(backFromInbox) {
-			backFromInbox = false;
-			moveTaskToBack(true);
-		}
-
 		if(PreferenceManager.getDefaultSharedPreferences(this)
 				.getBoolean("stealthmode", false)) {
 			findViewById(R.id.button1).performClick();
@@ -198,12 +192,13 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 		final String exitTo = sharedPrefs.getString("exitsetting",
 				"exitToDesktop");
 		if (exitTo.contains("exitToDesktop")) {
-			moveTaskToBack(true);
+			finish();
 		} else if (exitTo.contains("exitToInbox")) {
-			backFromInbox = true;
+			finish();
 			final Intent smsIntent = new Intent(Intent.ACTION_MAIN);
 			smsIntent.addCategory(Intent.CATEGORY_DEFAULT);
 			smsIntent.setType("vnd.android-dir/mms-sms");
+			smsIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(smsIntent);
 		}
 	}
@@ -262,11 +257,9 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 		case R.id.menu_settings:
 			final Intent i = new Intent(this, UserSettingActivity.class);
 			startActivity(i);
-
 			break;
 
 		}
-
 		return true;
 	}
 
