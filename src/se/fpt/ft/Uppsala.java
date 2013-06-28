@@ -92,7 +92,7 @@ public class Uppsala extends Ticket {
 			price = isUngdom ? 65 : 110;
 			timePiece.add(Calendar.MINUTE, 120);
 			code = isUngdom ? "ULSLU" : "ULSLV";
-			zone = "UL Län PLUS + SL Län";
+			zone = "UL + SL Län";
 			break;
 		case R.id.ULx12P:
 			price = isUngdom ? 81 : 135;
@@ -104,7 +104,7 @@ public class Uppsala extends Ticket {
 			price = isUngdom ? 92 : 155;
 			timePiece.add(Calendar.MINUTE, 150);
 			code = isUngdom ? "UL12PSLU" : "UL12PSLV";
-			zone = "UL + SL Län";
+			zone = "UL Län PLUS + SL Län";
 			break;
 		case R.id.ULCY:
 			price = 45;
