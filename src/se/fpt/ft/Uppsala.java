@@ -30,30 +30,30 @@ public class Uppsala extends Ticket {
 		switch (id) {
 		case R.id.Ux:
 			timePiece.add(Calendar.MINUTE, 90);
-			price = isUngdom ? 15 : 25;
+			price = isUngdom ? 10 : 19;
 			code = isUngdom ? "UU" : "UV";
 			zone = "Stadsbuss";
 			break;
 		case R.id.ULxT:
-			price = isUngdom ? 12 : 20;
+			price = isUngdom ? 9 : 17;
 			timePiece.add(Calendar.MINUTE, 90);
 			code = isUngdom ? "ULUT" : "ULVT";
 			zone = "Tätort";
 			break;
 		case R.id.ULx1:
-			price = isUngdom ? 27 : 45;
+			price = isUngdom ? 20 : 29;
 			timePiece.add(Calendar.MINUTE, 90);
 			code = isUngdom ? "ULU1" : "ULV1";
 			zone = "Zon 1";
 			break;
 		case R.id.ULx2:
-			price = isUngdom ? 27 : 45;
+			price = isUngdom ? 20 : 29;
 			timePiece.add(Calendar.MINUTE, 90);
 			code = isUngdom ? "ULU2" : "ULV2";
 			zone = "Zon 2";
 			break;
 		case R.id.ULxP:
-			price = isUngdom ? 27 : 45;
+			price = isUngdom ? 20 : 29;
 			timePiece.add(Calendar.MINUTE, 90);
 			code = isUngdom ? "ULUP" : "ULVP";
 			zone = "PLUS";
@@ -71,19 +71,19 @@ public class Uppsala extends Ticket {
 			zone = "UL zon 2 + SL Län";
 			break;
 		case R.id.ULx2P:
-			price = isUngdom ? 54 : 90;
+			price = isUngdom ? 40 : 58;
 			timePiece.add(Calendar.MINUTE, 90);
 			code = isUngdom ? "ULU2P" : "ULV2P";
 			zone = "Zon 2 PLUS";
 			break;
 		case R.id.ULx12:
-			price = isUngdom ? 54 : 90;
+			price = isUngdom ? 40 : 58;
 			timePiece.add(Calendar.MINUTE, 90);
 			code = isUngdom ? "ULU12" : "ULV12";
 			zone = "Län";
 			break;
 		case R.id.ULSLCx:
-			price = isUngdom ? 50 : 90;
+			price = isUngdom ? 50 : 55;
 			timePiece.add(Calendar.MINUTE, 120);
 			code = isUngdom ? "ULSLCU" : "ULSLCV";
 			zone = "UL Län + SL zon C Nord";
@@ -95,7 +95,7 @@ public class Uppsala extends Ticket {
 			zone = "UL + SL Län";
 			break;
 		case R.id.ULx12P:
-			price = isUngdom ? 81 : 135;
+			price = isUngdom ? 60 : 87;
 			timePiece.add(Calendar.MINUTE, 90);
 			code = isUngdom ? "ULU12P" : "ULV12P";
 			zone = "Län PLUS";
