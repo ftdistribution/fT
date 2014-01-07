@@ -220,9 +220,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 			final String setting = iter.next();
 			final String[] settings = setting.split(":");
 			if (settings[0].equals(currentCity)) {
-				if (Integer.valueOf(settings[1]) == view.getId()) {
-					iter.remove();
-				}
+				iter.remove();
 			}
 		}
 		currentSettings.add(currentCity + ":"
