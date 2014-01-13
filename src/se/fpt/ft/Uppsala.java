@@ -117,11 +117,14 @@ public class Uppsala extends Ticket {
 		String creature = isUngdom ? "UNGDOM" : "VUXEN";
 		if (id == R.id.ULCY)
 			creature = "Cykel";
+		
+		String sender = String.valueOf(numberTail);
 
-		contentInboxValues.put("address", "UL" + String.valueOf(numberTail));
-		contentInboxValues.put("body", "UV " + creature + " Giltig till "
+		contentInboxValues.put("address", "UL" + sender);
+		contentInboxValues.put("body", sender + " UL\n\n"
+				+ code + " " + creature + " Giltig till "
 				+ DateFormat.format("kk:mm yyyy-MM-dd", timePiece) + "\n"
-				+ zone + "\n\n" + String.valueOf(price) + " SEK (6% MOMS)\n"
+				+ zone + "\n\n" + String.valueOf(price) + " SEK (6% MOMS) "
 				+ seed + "\n\n" + generateRandomAEOXStringBlock(seed));
 
 		contentOutboxValues.put("address", String.valueOf("0704202222"));
