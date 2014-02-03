@@ -20,14 +20,15 @@ public class Stockholm extends Ticket {
 				|| zones.equals("BC") || zones.equals("BCL")
 				|| zones.equals("C") || zones.equals("CL") || zones.equals("L"))) {
 			// Illegal zone combination.
-			errorMessages = "Din zonkombination: " + zones
-					+ " suger.\nGör om gör rätt!!!.";
+			errorMessages = "Välj om dina zoner, efter att du valt Vuxen/Reducerad.";
 			return;
 		}
 
 		int price = 10 + (zoneA ? 10 : 0) + (zoneB ? 10 : 0) + (zoneC ? 10 : 0);
 		price += zoneL ? 20 : 0;
-		
+
+		String spacedSeed = new StringBuilder(seed).insert(6, " ").toString();
+
 		timePiece.add(Calendar.MINUTE,
 				zones.startsWith("ABC") || zones.equals("L") ? 120 : 75);
 		contentInboxValues.put("address", "SL" + String.valueOf(numberTail));
@@ -48,13 +49,15 @@ public class Stockholm extends Ticket {
 						+ generateRandomAEOXStringBlock(seed)
 						+ "\n\n"
 						+ "SL biljett giltig till "
-						+ DateFormat.format("kk:mm yyyy-MM-dd", timePiece)
+						+ DateFormat.format("kk:mm, yyyy-MM-dd", timePiece)
 						+ "\n"
 						+ (reduced ? "Red pris" : "Helt pris")
 						+ " "
 						+ String.valueOf(reduced ? price
 								: (int) (price / (5d / 9d)))
-						+ " kr ink 6% moms\n" + seed + "\n" + "m.sl.se");
+						+ " kr ink 6% moms\n"
+						+ spacedSeed + "\n"
+						+ "m.sl.se");
 
 		contentOutboxValues.put("address", String.valueOf("0767201010"));
 		contentOutboxValues.put("body", (reduced ? "R" : "H") + zones);
